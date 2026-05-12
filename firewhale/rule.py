@@ -132,7 +132,7 @@ def make_nft_rule(rule, container: 'Container', *,
                 nets = container.attrs["NetworkSettings"]["Networks"]
                 if net_name not in nets:
                     raise ValueError(f"Network {net_name} not found")
-                net = net[net_name]
+                net = nets[net_name]
                 m["right"] = { "prefix": { "addr": net["IPAddress"], "len": net["IPPrefixLen"] } }
 
                 nfexprs.append({ "match": m })
@@ -157,7 +157,7 @@ def make_nft_rule(rule, container: 'Container', *,
                 return
 
             # IP/CIDR
-            match = re.match(r"^(\d+\.\d+\.\d+\.\d+)(?:\/(\d+))$", peer)
+            match = re.match(r"^(\d+\.\d+\.\d+\.\d+)(?:\/(\d+))?$", peer)
             if match:
                 ip, prefix = match.groups()
                 if prefix:
@@ -188,7 +188,7 @@ def make_nft_rule(rule, container: 'Container', *,
     if "dst_port" in rule:
         nfexprs.append({ "match": {
             "op": "==",
-            "left": { "payload": { "protocol": "tcp", "field": "sport" } },
+            "left": { "payload": { "protocol": "tcp", "field": "dport" } },
             "right": parse_port(rule["dst_port"]),
         }})
 
@@ -204,6 +204,8 @@ def make_nft_rule(rule, container: 'Container', *,
         # "Accept" Rules should actually be "Return" Rules)
         nfexprs.append({ "return": None })
 
+    comment = rule.get("comment")
+
     rule = {
         "expr": nfexprs,
     }
@@ -213,8 +215,8 @@ def make_nft_rule(rule, container: 'Container', *,
         rule["table"] = chain["table"]
         rule["chain"] = chain["name"]
 
-    if "comment" in rule:
-        rule["comment"] = rule["comment"]
+    if comment:
+        rule["comment"] = comment
 
     return rule
 
@@ -222,8 +224,8 @@ def parse_port(port):
     if port.isdigit():
         return int(port)
     elif re.match(r"^\d+\s*\-\s*\d+$", port):
-        return { "range": port.split("-") }
+        return { "range": [int(p.strip()) for p in port.split("-")] }
     elif "," in port:
-        return { "set": port.split(",") }
+        return { "set": [int(p.strip()) for p in port.split(",")] }
     else:
         raise ValueError(f"Invalid port: {port}")

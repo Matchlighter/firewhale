@@ -16,6 +16,8 @@ setup(
         'ansibleguy-nftables',
         'docker',
         'pyyaml',
+        'redis',
+        'typer',
         'websockets',
     ],
     entry_points={

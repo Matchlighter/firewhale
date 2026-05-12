@@ -1,6 +1,10 @@
 Firewhale
 ===
 
+NB: This is scrapped. There is a fundamental issue with how it handles traffic - it won't be able to see intra-swarm traffic correctly. Will need to re-architect to apply rules to the individual container namespaces. At this point, I switched to Kubernetes.
+
+---
+
 NFTables rule management for Docker Containers, Docker Compose, and Docker Swarm.
 
 Note that this tool is not perfect and intended more as an extra layer of security rather than as the primary layer. This is due to it's reliance on Docker events - there is a short period of time between a container starting and Firewhale applying rules.
