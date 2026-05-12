@@ -1,0 +1,3769 @@
+{
+    "nftables": [
+        {
+            "metainfo": {
+                "version": "1.0.2",
+                "release_name": "Lester Gooch",
+                "json_schema_version": 1
+            }
+        },
+        {
+            "table": {
+                "family": "ip",
+                "name": "filter",
+                "handle": 1
+            }
+        },
+        {
+            "map": {
+                "family": "ip",
+                "name": "whalewall-container-addrs",
+                "table": "filter",
+                "type": "ipv4_addr",
+                "handle": 118,
+                "map": "verdict",
+                "elem": [
+                    [
+                        "172.16.96.2",
+                        {
+                            "jump": {
+                                "target": "whalewall-app-miniflux_db-1-9dc62ada7228"
+                            }
+                        }
+                    ],
+                    [
+                        "172.16.96.3",
+                        {
+                            "jump": {
+                                "target": "whalewall-app-miniflux-1-7e12fbbff0bb"
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "DOCKER",
+                "handle": 17
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER",
+                "handle": 107,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "l4proto"
+                                }
+                            },
+                            "right": "tcp"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.21.0.2"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER",
+                "handle": 108,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "l4proto"
+                                }
+                            },
+                            "right": "tcp"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.21.0.4"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER",
+                "handle": 109,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "l4proto"
+                                }
+                            },
+                            "right": "tcp"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.21.0.3"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER",
+                "handle": 110,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "l4proto"
+                                }
+                            },
+                            "right": "tcp"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.21.0.3"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER",
+                "handle": 111,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "l4proto"
+                                }
+                            },
+                            "right": "tcp"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.21.0.3"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER",
+                "handle": 125,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "l4proto"
+                                }
+                            },
+                            "right": "tcp"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 18
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 102,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 2,
+                            "bytes": 128
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 95,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 88,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 81,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 67,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 58,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 51,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 6883,
+                            "bytes": 537948
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 42,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 35,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 28,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-1",
+                "handle": 20,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 9190892,
+                            "bytes": 1653603785
+                        }
+                    },
+                    {
+                        "return": null
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 19
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 103,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 96,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 89,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 82,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 68,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 59,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 52,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 44,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 36,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 29,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-ISOLATION-STAGE-2",
+                "handle": 21,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 6885,
+                            "bytes": 538076
+                        }
+                    },
+                    {
+                        "return": null
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "FORWARD",
+                "handle": 22,
+                "type": "filter",
+                "hook": "forward",
+                "prio": 0,
+                "policy": "drop"
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 106,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 9193318,
+                            "bytes": 1653780437
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-USER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 101,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 9190892,
+                            "bytes": 1653603785
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER-ISOLATION-STAGE-1"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 100,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 2,
+                            "bytes": 209
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 99,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 98,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 2,
+                            "bytes": 128
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 97,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker0"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 93,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 92,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 91,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 86,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 85,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 84,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 83,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-f8ea66866f31"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 79,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 78,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 77,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 76,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-d3041f60d0a3"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 65,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 64,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 63,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 62,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-91e50e8d0579"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 56,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 55,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 54,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 53,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-65db3a569fb8"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 49,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 7974705,
+                            "bytes": 1357595496
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 48,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 1209300,
+                            "bytes": 295470004
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 47,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 6883,
+                            "bytes": 537948
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 46,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-12da8a9b679d"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 1209300,
+                            "bytes": 295470004
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 40,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 39,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 38,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 37,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-fcd51a186602"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 33,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 32,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 31,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 30,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-c8856ae51231"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 26,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "xt": null
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 25,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "DOCKER"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 24,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "!=",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 23,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "br-6be0ddea13a1"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "FORWARD",
+                "handle": 90,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "iifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "meta": {
+                                    "key": "oifname"
+                                }
+                            },
+                            "right": "docker_gwbridge"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "DOCKER-USER",
+                "handle": 104
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-USER",
+                "handle": 113,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 9188795,
+                            "bytes": 1652901680
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "whalewall"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "DOCKER-USER",
+                "handle": 105,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 9190892,
+                            "bytes": 1653603785
+                        }
+                    },
+                    {
+                        "return": null
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "whalewall",
+                "handle": 112
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall",
+                "handle": 119,
+                "expr": [
+                    {
+                        "vmap": {
+                            "key": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "data": "@whalewall-container-addrs"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall",
+                "handle": 120,
+                "expr": [
+                    {
+                        "vmap": {
+                            "key": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "data": "@whalewall-container-addrs"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "INPUT",
+                "handle": 114,
+                "type": "filter",
+                "hook": "input",
+                "prio": 0,
+                "policy": "accept"
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "INPUT",
+                "handle": 115,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 653021,
+                            "bytes": 145673909
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "whalewall"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "OUTPUT",
+                "handle": 116,
+                "type": "filter",
+                "hook": "output",
+                "prio": 0,
+                "policy": "accept"
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "OUTPUT",
+                "handle": 117,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 196473,
+                            "bytes": 198528723
+                        }
+                    },
+                    {
+                        "jump": {
+                            "target": "whalewall"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "whalewall-app-miniflux_db-1-9dc62ada7228",
+                "handle": 121
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux_db-1-9dc62ada7228",
+                "handle": 137,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.2"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "sport"
+                                }
+                            },
+                            "right": 5432
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 1129,
+                            "bytes": 87930
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux_db-1-9dc62ada7228",
+                "handle": 126,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "log": {
+                            "prefix": "whalewall-app-miniflux_db-1-9dc62ada7228 drop: ",
+                            "level": "info"
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        },
+        {
+            "chain": {
+                "family": "ip",
+                "table": "filter",
+                "name": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 127
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 142,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.1"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "dport"
+                                }
+                            },
+                            "right": 8080
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related",
+                                "new"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 141,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.1"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "sport"
+                                }
+                            },
+                            "right": 8080
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 140,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": {
+                                "range": [
+                                    "192.168.1.0",
+                                    "192.168.1.255"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "dport"
+                                }
+                            },
+                            "right": 8080
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related",
+                                "new"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 139,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": {
+                                "range": [
+                                    "192.168.1.0",
+                                    "192.168.1.255"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "sport"
+                                }
+                            },
+                            "right": 8080
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 138,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.2"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "dport"
+                                }
+                            },
+                            "right": 5432
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related",
+                                "new"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 1296,
+                            "bytes": 88662
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 136,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "udp",
+                                    "field": "dport"
+                                }
+                            },
+                            "right": 53
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": "new"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "log": {
+                            "prefix": "whalewall-app-miniflux-1-7e12fbbff0bb dns: ",
+                            "level": "info"
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 135,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "udp",
+                                    "field": "dport"
+                                }
+                            },
+                            "right": 53
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 134,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "udp",
+                                    "field": "sport"
+                                }
+                            },
+                            "right": 53
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 133,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "dport"
+                                }
+                            },
+                            "right": 443
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": "new"
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "log": {
+                            "prefix": "whalewall-app-miniflux-1-7e12fbbff0bb https: ",
+                            "level": "info"
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 132,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "saddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "dport"
+                                }
+                            },
+                            "right": 443
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 131,
+                "expr": [
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "ip",
+                                    "field": "daddr"
+                                }
+                            },
+                            "right": "172.16.96.3"
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "==",
+                            "left": {
+                                "payload": {
+                                    "protocol": "tcp",
+                                    "field": "sport"
+                                }
+                            },
+                            "right": 443
+                        }
+                    },
+                    {
+                        "match": {
+                            "op": "in",
+                            "left": {
+                                "ct": {
+                                    "key": "state"
+                                }
+                            },
+                            "right": [
+                                "established",
+                                "related"
+                            ]
+                        }
+                    },
+                    {
+                        "counter": {
+                            "packets": 0,
+                            "bytes": 0
+                        }
+                    },
+                    {
+                        "accept": null
+                    }
+                ]
+            }
+        },
+        {
+            "rule": {
+                "family": "ip",
+                "table": "filter",
+                "chain": "whalewall-app-miniflux-1-7e12fbbff0bb",
+                "handle": 128,
+                "expr": [
+                    {
+                        "counter": {
+                            "packets": 1,
+                            "bytes": 60
+                        }
+                    },
+                    {
+                        "log": {
+                            "prefix": "whalewall-app-miniflux-1-7e12fbbff0bb drop: ",
+                            "level": "info"
+                        }
+                    },
+                    {
+                        "drop": null
+                    }
+                ]
+            }
+        }
+    ]
+}

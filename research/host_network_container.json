@@ -1,0 +1,261 @@
+[
+    {
+        "Id": "97bcf267caa2e046f98a971b1eac3075af6c97ab7333c8efecfcf17dbe94dca1",
+        "Created": "2024-10-29T17:36:54.462839674Z",
+        "Path": "bash",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 13328,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2024-10-29T17:36:54.538268383Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:88665a905fe85f42547730cde2d441689baa089b9b10c78839c59e7bbe299507",
+        "ResolvConfPath": "/var/lib/docker/containers/97bcf267caa2e046f98a971b1eac3075af6c97ab7333c8efecfcf17dbe94dca1/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/97bcf267caa2e046f98a971b1eac3075af6c97ab7333c8efecfcf17dbe94dca1/hostname",
+        "HostsPath": "/var/lib/docker/containers/97bcf267caa2e046f98a971b1eac3075af6c97ab7333c8efecfcf17dbe94dca1/hosts",
+        "LogPath": "/var/lib/docker/containers/97bcf267caa2e046f98a971b1eac3075af6c97ab7333c8efecfcf17dbe94dca1/97bcf267caa2e046f98a971b1eac3075af6c97ab7333c8efecfcf17dbe94dca1-json.log",
+        "Name": "/firewhale-firewhale-run-028887f94bd1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "host",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": true,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": [
+                "NET_ADMIN"
+            ],
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "Mounts": [
+                {
+                    "Type": "bind",
+                    "Source": "/Users/eknapp/projects/firewhale",
+                    "Target": "/code",
+                    "BindOptions": {
+                        "Propagation": "rprivate",
+                        "CreateMountpoint": true
+                    }
+                },
+                {
+                    "Type": "bind",
+                    "Source": "/var/run/docker.sock",
+                    "Target": "/var/run/docker.sock",
+                    "BindOptions": {
+                        "Propagation": "rprivate",
+                        "CreateMountpoint": true
+                    }
+                }
+            ],
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/e1c97cb94d29e1daba95080598c58349a7f0e458185172d1b772784c22723f7a-init/diff:/var/lib/docker/overlay2/10vrh1ljuvmej0ctu8i0y5nq8/diff:/var/lib/docker/overlay2/54fatqehn6dhneiqdaoczf6ey/diff:/var/lib/docker/overlay2/r3ptdbx0iic0ofabboifhtarh/diff:/var/lib/docker/overlay2/cmwh6y5yefghfxwiwuve81urn/diff:/var/lib/docker/overlay2/nwo8osb32xsr78pow8xt9tg6f/diff:/var/lib/docker/overlay2/xjsqtvr6swm1v8d95jg8madvz/diff:/var/lib/docker/overlay2/d95ca91294e254b6890db189a85469b36e5aba3f4c85600108856ed43f4c0d14/diff:/var/lib/docker/overlay2/d2a6abf8a4258446259febafeb9cb9f74e71e0d4163405e4a0a29f1d44c5fb91/diff:/var/lib/docker/overlay2/a54044499786c2c47eced9fd74e925d5d666f49f82618b714af95db193c81753/diff:/var/lib/docker/overlay2/776e7779256335338884b2fbedf85b56bf61437e19a371693f6499a701767e17/diff:/var/lib/docker/overlay2/94bd0e19786800946438f6c33329f0f35baf45057c000eb9fd9492214cfbea5c/diff:/var/lib/docker/overlay2/aabdf5d923410a6c33c13c20cd06e0f48c0a657bd33bd5c47872b0deccd9305b/diff:/var/lib/docker/overlay2/a536db9d3dfe5c481ad1b19a99d446b5e54dd7c2385ecdf82fb9c3dba7b18963/diff",
+                "MergedDir": "/var/lib/docker/overlay2/e1c97cb94d29e1daba95080598c58349a7f0e458185172d1b772784c22723f7a/merged",
+                "UpperDir": "/var/lib/docker/overlay2/e1c97cb94d29e1daba95080598c58349a7f0e458185172d1b772784c22723f7a/diff",
+                "WorkDir": "/var/lib/docker/overlay2/e1c97cb94d29e1daba95080598c58349a7f0e458185172d1b772784c22723f7a/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/Users/eknapp/projects/firewhale",
+                "Destination": "/code",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/var/run/docker.sock",
+                "Destination": "/var/run/docker.sock",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "lima-rancher-desktop",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": true,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": true,
+            "OpenStdin": true,
+            "StdinOnce": true,
+            "Env": [
+                "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.13.0",
+                "PYTHON_SHA256=086de5882e3cb310d4dca48457522e2e48018ecd43da9cdf827f6a0759efb07d",
+                "PYTHONFAULTHANDLER=1",
+                "PYTHONUNBUFFERED=1",
+                "PYTHONHASHSEED=random",
+                "PIP_NO_CACHE_DIR=off",
+                "PIP_DISABLE_PIP_VERSION_CHECK=on",
+                "PIP_DEFAULT_TIMEOUT=100",
+                "POETRY_NO_INTERACTION=1",
+                "POETRY_VIRTUALENVS_CREATE=false",
+                "POETRY_CACHE_DIR=/var/cache/pypoetry",
+                "POETRY_HOME=/usr/local",
+                "POETRY_VERSION=1.7.1"
+            ],
+            "Cmd": [
+                "bash"
+            ],
+            "Image": "firewhale-firewhale",
+            "Volumes": null,
+            "WorkingDir": "/code",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "280ddba9365e7545706c041207d06f2a7e09732d0c4c6d5d6d7c915c07154d80",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:88665a905fe85f42547730cde2d441689baa089b9b10c78839c59e7bbe299507",
+                "com.docker.compose.oneoff": "True",
+                "com.docker.compose.project": "firewhale",
+                "com.docker.compose.project.config_files": "/Users/eknapp/projects/firewhale/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/Users/eknapp/projects/firewhale",
+                "com.docker.compose.service": "firewhale",
+                "com.docker.compose.slug": "028887f94bd12cca281eddf2d4080d970054f7c91dd27d7609b11d7a55f9a6d9",
+                "com.docker.compose.version": "2.29.5"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "dc4f412ac74b68716cc974a61eca4f60af08d75fbc4ba3946c952d1a39a0300a",
+            "SandboxKey": "/var/run/docker/netns/default",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "host": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "",
+                    "NetworkID": "56b86ed9bfab96d6a162cdd845c3bdd5b481b851922786edc4c6789e56174d63",
+                    "EndpointID": "3d6d88ee96e592746c92a3be7dd9d81b994849daa7eb2180070ace11837d7031",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null,
+                    "DNSNames": null
+                }
+            }
+        }
+    }
+]

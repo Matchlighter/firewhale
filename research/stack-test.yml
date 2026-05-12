@@ -1,0 +1,51 @@
+---
+services:
+  svc_test1:
+    hostname: test1
+    image: mendhak/http-https-echo:23
+    networks:
+      - test
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == docker02
+
+  svc_test2:
+    hostname: test2
+    image: mendhak/http-https-echo:23
+    networks:
+      - test
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == docker01
+
+  svc_test3:
+    hostname: test3
+    image: mendhak/http-https-echo:23
+    networks:
+      - test
+    labels:
+      firewhale.enabled: "true"
+      firewhale.inbound-rules: |
+        - tcp; 10.1.2.0/24
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == docker00
+
+  ubuntu:
+    image: ubuntu:latest
+    command: sleep 10000
+    networks:
+      - test
+    labels:
+      firewhale.enabled: "true"
+      firewhale.outbound-rules: |
+        - internet
+        - svc_test1.test
+        - svc_test2.test
+        - dport: 53
+
+networks:
+  test:
